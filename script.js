@@ -2,7 +2,7 @@ const canvas = document.getElementById("canvams");
 const ctx = canvas.getContext("2d");
 const img = document.getElementById("playerguy");
 const playerspeed = 20;
-ctx.scale(0.1, 0.1);
+ctx.scale(0.7, 0.7);
 const keysPressed = {};
 
 if (img.complete) {
@@ -49,7 +49,7 @@ let speedx = 0
 let speedy = 0
 
 function animate() {
-    ctx.clearRect(0, 0, canvas.width * 10, canvas.height * 10);
+    ctx.clearRect(0, 0, canvas.width * 70, canvas.height * 70);
     ctx.drawImage(img, playerx, playery);
     playerx += speedx;
     playery += speedy;
