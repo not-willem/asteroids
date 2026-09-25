@@ -2,7 +2,9 @@ canvas {
     border: 1px solid #000000;
     display: block;
     margin: 20px auto;
-    background-color: white;
+    background-image: url("background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body {
