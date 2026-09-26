@@ -1,6 +1,7 @@
 const canvas = document.getElementById("canvams");
 const ctx = canvas.getContext("2d");
 const img = document.getElementById("playerguy");
+const ast = document.getElementById("asteroid");
 const playerspeed = 10;
 
 ctx.scale(0.3, 0.3);
@@ -48,6 +49,7 @@ function animate() {
     playery += speedy;
 
     ctx.drawImage(img, playerx, playery);
+    ctx.drawImage(ast, 0, 0);
     requestAnimationFrame(animate);
 }
 animate();
