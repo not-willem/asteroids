@@ -15,3 +15,5 @@ Also we had some technical difficulties, like my computer with 4gb of RAM was cr
 So go on, [play it](https://not-willem.github.io/debris/) already!
 
 :D
+
+<sub><sup>also apologies for my badly named git commits, due to the time limits i really couldn't be bothered making proper names for things</sup></sub>
