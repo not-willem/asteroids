@@ -6,6 +6,8 @@ const ast2 = document.getElementById("asteroid2");
 const ast3 = document.getElementById("asteroid3");
 const player_speed = 10;
 let gamerunning = true;
+const Music1 = new Audio('Game sounds/Music/Music1.ogg');
+Music1.play();
 
 function random_man(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
