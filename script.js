@@ -1,5 +1,5 @@
 const canvas = document.getElementById("canvams");
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("2d", { willReadFrequently: true });
 const img = document.getElementById("playerguy");
 const ast = document.getElementById("asteroid1");
 const ast2 = document.getElementById("asteroid2");
