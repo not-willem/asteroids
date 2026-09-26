@@ -5,11 +5,9 @@ const scoreman = document.getElementById("score");
 scoreman.textContent = "Score: "+score;
 const canvas = document.getElementById("canvams");
 const ctx = canvas.getContext("2d", { willReadFrequently: true });
-const img = document.getElementById("playerguy");
 const ast = document.getElementById("asteroid1");
 const ast2 = document.getElementById("asteroid2");
 const ast3 = document.getElementById("asteroid3");
-const player_speed = 10;
 let gamerunning = true;
 const Music1 = new Audio('Game sounds/Music/Music1.ogg');
 const Gun1 = new Audio('Game sounds/Gun/railgun-gunshot-1.ogg');
@@ -44,10 +42,6 @@ ctx.scale(0.3, 0.3);
 
 const keys_pressed = {};
 
-let player_x = 0;
-let player_y = 850;
-let speed_x = 0;
-let speed_y = 0;
 let met_x = 0;
 let met_y = -30;
 let random_dn = 1;
@@ -112,10 +106,6 @@ function check_collision(img1, x1, y1, img2, x2, y2) {
 
 document.addEventListener('keydown', (event) => {
     keys_pressed[event.key] = true;
-    if (keys_pressed['d'] || keys_pressed['D']) { speed_x = player_speed; }
-    if (keys_pressed['a'] || keys_pressed['A']) { speed_x = -player_speed; }
-    if (keys_pressed['s'] || keys_pressed['S']) { speed_y = player_speed; }
-    if (keys_pressed['w'] || keys_pressed['W']) { speed_y = -player_speed; }
 });
 canvas.addEventListener('mousemove', (event) => {
     const rect = canvas.getBoundingClientRect();
@@ -159,14 +149,10 @@ document.addEventListener('click', (event) => {
 });
 document.addEventListener('keyup', (event) => {
     keys_pressed[event.key] = false;
-    if (!keys_pressed['d'] && !keys_pressed['a'] && !keys_pressed['D'] && !keys_pressed['A']) { speed_x = 0; }
-    if (!keys_pressed['w'] && !keys_pressed['s'] && !keys_pressed['W'] && !keys_pressed['S']) { speed_y = 0; }
 });
 
 window.addEventListener('blur', () => {
     for (let key in keys_pressed) { keys_pressed[key] = false; }
-    speed_x = 0;
-    speed_y = 0;
 });
 
 function animate() {
@@ -174,24 +160,9 @@ function animate() {
 
     ctx.clearRect(0, 0, canvas.width / 0.3, canvas.height / 0.3);
 
-    let next_x = player_x + speed_x;
-    let next_y = player_y + speed_y;
-
-    const s = get_drawn_size(img);
-    if (next_x >= 0 && next_x + s.w <= canvas.width / 0.3) { player_x = next_x; }
-    if (next_y >= 0 && next_y + s.h <= canvas.height / 0.3) { player_y = next_y; }
-
-    ctx.drawImage(img, player_x, player_y);
-
     if (random_dn == 1) { ctx.drawImage(ast, met_x, met_y); current_ast = ast; }
     if (random_dn == 2) { ctx.drawImage(ast2, met_x, met_y); current_ast = ast2; }
     if (random_dn == 3) { ctx.drawImage(ast3, met_x, met_y); current_ast = ast3; }
-
-    if (check_collision(img, player_x, player_y, current_ast, met_x, met_y)) {
-        console.log("collision poo poo");
-        gameover();
-        return;
-    }
 
     if (met_y < canvas.height / 0.3) {
         met_y = met_y + 10;
@@ -216,7 +187,7 @@ function animate() {
 }
 
 let images_loaded = 0;
-const total_images = 4;
+const total_images = 3;
 function on_image_load() {
     images_loaded++;
     if (images_loaded >= total_images) {
@@ -224,7 +195,6 @@ function on_image_load() {
     }
 }
 
-if (img.complete) on_image_load(); else img.onload = on_image_load;
 if (ast.complete) on_image_load(); else ast.onload = on_image_load;
 if (ast2.complete) on_image_load(); else ast2.onload = on_image_load;
 if (ast3.complete) on_image_load(); else ast3.onload = on_image_load;
