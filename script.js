@@ -152,6 +152,9 @@ function animate() {
     if (check_collision(img, player_x, player_y, current_ast, met_x, met_y)) {
         console.log("collision poo poo");
         gamerunning = false;
+        const scoreman = document.getElementById("score");
+        scoreman.textContent = "Game Over!";
+        document.body.innerHTML += '<button id="restart">Play Again?</button>';
         return;
     }
 
