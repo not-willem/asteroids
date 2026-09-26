@@ -165,7 +165,7 @@ function animate() {
     if (random_dn == 3) { ctx.drawImage(ast3, met_x, met_y); current_ast = ast3; }
 
     if (met_y < canvas.height / 0.3) {
-        spppeeeddd = score/2
+        spppeeeddd = score/4
         spppeeeddd = spppeeeddd + 10
         met_y = met_y + spppeeeddd;
         met_x = met_x + change_x;
