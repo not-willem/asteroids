@@ -163,6 +163,9 @@ function animate() {
         met_x = random_man(0, canvas.width / 0.3);
         random_dn = random_man(1, 3);
         change_x = random_man(-2, 2);
+        score = score - 2;
+        const scoreman = document.getElementById("score");
+        scoreman.textContent = "Score: "+score;
     }
     ctx.fillStyle = "red";
     ctx.fillRect(mouse_x, mouse_y, 10, 10);
