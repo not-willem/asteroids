@@ -56,6 +56,11 @@ function animate() {
     metx = randomman(0, canvas.width/0.3);
     ctx.drawImage(img, playerx, playery);
     ctx.drawImage(ast, metx, mety);
+    if (mety < canvas.height / 0.3) {
+      mety = mety + 1
+    } else {
+      mety = 0
+    }
     
     requestAnimationFrame(animate);
 }
