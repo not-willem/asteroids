@@ -47,19 +47,20 @@ let speedx = 0;
 let speedy = 0;
 let metx = 0;
 let mety = 0;
-
+metx = randomman(0, canvas.width/0.3);
 function animate() {
     ctx.clearRect(0, 0, canvas.width / 0.3, canvas.height / 0.3);
     
     playerx += speedx;
     playery += speedy;
-    metx = randomman(0, canvas.width/0.3);
+    
     ctx.drawImage(img, playerx, playery);
     ctx.drawImage(ast, metx, mety);
     if (mety < canvas.height / 0.3) {
-      mety = mety + 1
+      mety = mety + 10
     } else {
-      mety = 0
+      mety = -10
+      metx = randomman(0, canvas.width/0.3);
     }
     
     requestAnimationFrame(animate);
