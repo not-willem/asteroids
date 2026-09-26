@@ -5,6 +5,7 @@ const ast = document.getElementById("asteroid1");
 const ast2 = document.getElementById("asteroid2");
 const ast3 = document.getElementById("asteroid3");
 const player_speed = 10;
+let gamerunning = true;
 function random_man(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 ctx.scale(0.3, 0.3);
 const keys_pressed = {};
@@ -70,8 +71,9 @@ if (random_dn == 2) { ctx.drawImage(ast2, met_x, met_y); current_ast = ast2; }
 if (random_dn == 3) { ctx.drawImage(ast3, met_x, met_y); current_ast = ast3; }
 if (check_collision(img, player_x, player_y, current_ast, met_x, met_y)) {
 console.log("collision");
+gamerunning = false;
 }
 if (met_y < canvas.height / 0.3) { met_y = met_y + 10 } else { met_y = -30; met_x = random_man(0, canvas.width/0.3); random_dn = random_man(1, 3); }
-requestAnimationFrame(animate);
+if (gamerunning){requestAnimationFrame(animate);}
 }
 animate();
