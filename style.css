@@ -11,6 +11,11 @@ body {
     background-color: black;
 }
 
+.score {
+    color:white;
+    
+}
+
 .player {
     display: none;
 }
