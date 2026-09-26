@@ -4,6 +4,10 @@ const img = document.getElementById("playerguy");
 const ast = document.getElementById("asteroid");
 const playerspeed = 10;
 
+function randomman(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 ctx.scale(0.3, 0.3);
 const keysPressed = {};
 
@@ -49,7 +53,7 @@ function animate() {
     
     playerx += speedx;
     playery += speedy;
-
+    metx = randomman(0, canvas.width/0.3);
     ctx.drawImage(img, playerx, playery);
     ctx.drawImage(ast, metx, mety);
     
