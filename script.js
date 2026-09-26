@@ -126,16 +126,22 @@ canvas.addEventListener('mousemove', (event) => {
 });
 document.addEventListener('click', (event) => {
     ok = random_man(1,5)
-    if (ok == 1):
+    if (ok == 1) {
         Gun1.play();
-    if (ok == 2):
+    }
+    if (ok == 2) {
         Gun2.play();
-    if (ok == 3):
+    }
+    if (ok == 3){
         Gun3.play();
-    if (ok == 4):
+    }
+    if (ok == 4){
         Gun4.play();
-    if (ok == 5):
+    }
+    if (ok == 5){
         Gun5.play();
+
+    }
     const s = get_drawn_size(current_ast);
     const hit = mouse_x >= met_x && mouse_x <= met_x + s.w &&
                 mouse_y >= met_y && mouse_y <= met_y + s.h;
