@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvams");
 const ctx = canvas.getContext("2d");
 const img = document.getElementById("playerguy");
-const playerspeed = 20;
+const playerspeed = 10;
 ctx.scale(0.3, 0.3);
 const keysPressed = {};
 
