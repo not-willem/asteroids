@@ -131,7 +131,8 @@ function animate() {
         random_dn = random_man(1, 3);
         change_x = random_man(-2, 2);
     }
-
+    ctx.fillStyle = "red";
+    ctx.fillRect(mouse_x, mouse_y, 10, 10);
     requestAnimationFrame(animate);
 }
 
