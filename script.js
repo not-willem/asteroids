@@ -70,10 +70,10 @@ if (random_dn == 1) { ctx.drawImage(ast, met_x, met_y); current_ast = ast; }
 if (random_dn == 2) { ctx.drawImage(ast2, met_x, met_y); current_ast = ast2; }
 if (random_dn == 3) { ctx.drawImage(ast3, met_x, met_y); current_ast = ast3; }
 if (check_collision(img, player_x, player_y, current_ast, met_x, met_y)) {
-console.log("collision");
+console.log("collision poo poo");
 gamerunning = false;
 }
-if (met_y < canvas.height / 0.3) { met_y = met_y + 10 } else { met_y = -50; met_x = random_man(0, canvas.width/0.3); random_dn = random_man(1, 3); }
+if (met_y < canvas.height / 0.3) { met_y = met_y + 10 } else { met_y = -500; met_x = random_man(0, canvas.width/0.3); random_dn = random_man(1, 3); }
 if (gamerunning){requestAnimationFrame(animate);}
 }
 animate();
