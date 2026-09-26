@@ -42,7 +42,7 @@ window.addEventListener('blur', () => {
 });
 
 let playerx = 0;
-let playery = 0;
+let playery = 850;
 let speedx = 0;
 let speedy = 0;
 let metx = 0;
