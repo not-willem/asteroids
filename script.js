@@ -12,8 +12,11 @@ const ast3 = document.getElementById("asteroid3");
 const player_speed = 10;
 let gamerunning = true;
 const Music1 = new Audio('Game sounds/Music/Music1.ogg');
-
-
+const Gun1 = new Audio('Game sounds/Gun/railgun-gunshot-1.ogg');
+const Gun2 = new Audio('Game sounds/Gun/railgun-gunshot-2.ogg');
+const Gun3 = new Audio('Game sounds/Gun/railgun-gunshot-3.ogg');
+const Gun4 = new Audio('Game sounds/Gun/railgun-gunshot-4.ogg');
+const Gun5 = new Audio('Game sounds/Gun/railgun-gunshot-5.ogg');
 
 let current_ast = ast;
 
@@ -122,6 +125,17 @@ canvas.addEventListener('mousemove', (event) => {
     mouse_y = css_y / 0.3;
 });
 document.addEventListener('click', (event) => {
+    ok = random_man(1,5)
+    if (ok == 1):
+        Gun1.play();
+    if (ok == 2):
+        Gun2.play();
+    if (ok == 3):
+        Gun3.play();
+    if (ok == 4):
+        Gun4.play();
+    if (ok == 5):
+        Gun5.play();
     const s = get_drawn_size(current_ast);
     const hit = mouse_x >= met_x && mouse_x <= met_x + s.w &&
                 mouse_y >= met_y && mouse_y <= met_y + s.h;
