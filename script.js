@@ -19,8 +19,8 @@ if (keys_pressed['w']) { speed_y = 0 - player_speed; }
 });
 document.addEventListener('keyup', (event) => {
 keys_pressed[event.key] = false; 
-if (!keys_pressed['d'] && !keys_pressed['a']) {if (speed_x > 0) {speed_x = speed_x - 0.5;}}
-if (!keys_pressed['w'] && !keys_pressed['s']) {if (speed_y > 0) {speed_y = speed_y - 0.5;}}
+if (!keys_pressed['d'] && !keys_pressed['a']) {if (speed_x > 0) {speed_x = speed_x - 3;}}
+if (!keys_pressed['w'] && !keys_pressed['s']) {if (speed_y > 0) {speed_y = speed_y - 3;}}
 });
 window.addEventListener('blur', () => {
 for (let key in keys_pressed) { keys_pressed[key] = false; }
