@@ -4,6 +4,7 @@ canvas {
     margin: 20px auto;
     background-image: url("background.jpeg");
     background-size: cover;
+    border-radius: 10px;
 }
 
 body {
