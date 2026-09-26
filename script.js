@@ -22,6 +22,7 @@ const mask_cache = new Map();
 function restartgame() {
         score = 0;
         gamerunning = true;
+        console.log("restarted")
 }
 
 function gameover() {
