@@ -23,6 +23,7 @@ function restartgame() {
         score = 0;
         gamerunning = true;
         console.log("restarted")
+        window.location.reload()
 }
 
 function gameover() {
