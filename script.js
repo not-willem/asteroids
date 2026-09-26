@@ -10,7 +10,7 @@ const ast3 = document.getElementById("asteroid3");
 const player_speed = 10;
 let gamerunning = true;
 const Music1 = new Audio('Game sounds/Music/Music1.ogg');
-Music1.play();
+
 
 function random_man(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
@@ -26,8 +26,16 @@ let met_x = 0;
 let met_y = -30;
 let random_dn = 1;
 let change_x = 0;
+let proj_x = 0;
+let proj_y = 0;
 
 met_x = random_man(0, canvas.width / 0.3);
+
+function shootpewpew(mx,my) {
+    proj_x = player_x
+    proj_y = player_y
+    
+}
 
 function get_drawn_size(image) {
     return {
@@ -84,6 +92,10 @@ canvas.addEventListener('mousemove', (event) => {
     const css_y = event.clientY - rect.top;
     mouse_x = css_x / 0.3;
     mouse_y = css_y / 0.3;
+});
+document.addEventListener('click', (event) => {
+  shootpewpew(mouse_x, mouse_y);
+    Music1.play();
 });
 document.addEventListener('keyup', (event) => {
     keys_pressed[event.key] = false;
