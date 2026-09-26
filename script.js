@@ -106,7 +106,10 @@ document.addEventListener('click', (event) => {
     const hit = mouse_x >= met_x && mouse_x <= met_x + s.w &&
                 mouse_y >= met_y && mouse_y <= met_y + s.h;
     if (hit) {
-        console.log("clcickced");
+        met_y = -500;
+        met_x = random_man(0, canvas.width / 0.3);
+        random_dn = random_man(1, 3);
+        change_x = random_man(-2, 2);
         return;
     }
     Music1.play();
