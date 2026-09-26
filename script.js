@@ -51,7 +51,10 @@ let speedy = 0
 function animate() {
     ctx.clearRect(0, 0, canvas.width * 30, canvas.height * 30);
     ctx.drawImage(img, playerx, playery);
-    playerx += speedx;
+    if ((playerx += speedx) < 600*30) {
+        playerx += speedx
+    }
+    
     playery += speedy;
     requestAnimationFrame(animate);
 }
