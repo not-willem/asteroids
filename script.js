@@ -37,6 +37,15 @@ function gameover() {
         res.addEventListener("click", restartgame);
 }
 
+function win() {
+        gamerunning = false;
+        const scoreman = document.getElementById("score");
+        scoreman.textContent = "You Won!";
+        document.body.innerHTML += '<div class="restart_div"><button id="restart" class="restart">Play Again?</button></div>';
+        const res = document.getElementById("restart");
+        res.addEventListener("click", restartgame);
+}
+
 function random_man(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
 ctx.scale(0.3, 0.3);
@@ -187,6 +196,9 @@ function animate() {
     if (score < 0){
         score = 0;
         gameover()
+    }
+    if (score > 29){
+        win()
     }
     
     requestAnimationFrame(animate);
