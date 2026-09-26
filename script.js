@@ -21,7 +21,7 @@ function gameover() {
         gamerunning = false;
         const scoreman = document.getElementById("score");
         scoreman.textContent = "Game Over!";
-        document.body.innerHTML += '<div id="restart_div"><button id="restart" class="restart">Play Again?</button></div>';
+        document.body.innerHTML += '<div class="restart_div"><button id="restart" class="restart">Play Again?</button></div>';
 }
 
 function random_man(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
