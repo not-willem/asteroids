@@ -16,6 +16,10 @@ if (keys_pressed['d']) { speed_x = player_speed; }
 if (keys_pressed['a']) { speed_x = 0 - player_speed; }
 if (keys_pressed['s']) { speed_y = player_speed; }
 if (keys_pressed['w']) { speed_y = 0 - player_speed; }
+if (keys_pressed['D']) { speed_x = player_speed; }
+if (keys_pressed['A']) { speed_x = 0 - player_speed; }
+if (keys_pressed['S']) { speed_y = player_speed; }
+if (keys_pressed['W']) { speed_y = 0 - player_speed; }
 });
 document.addEventListener('keyup', (event) => {
 keys_pressed[event.key] = false; 
@@ -63,8 +67,9 @@ return false;
 }
 function animate() {
 ctx.clearRect(0, 0, canvas.width / 0.3, canvas.height / 0.3);
-player_x += speed_x;
-player_y += speed_y;
+if (player_x += speed_x < canvas.width/0.3 || player_x += speed_x > 0){player_x += speed_x;}
+if (player_y += speed_y < canvas.height/0.3 || player_y += speed_y > 0){player_y += speed_y;}
+
 ctx.drawImage(img, player_x, player_y);
 let current_ast = ast;
 if (random_dn == 1) { ctx.drawImage(ast, met_x, met_y); current_ast = ast; }
