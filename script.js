@@ -34,6 +34,7 @@ let speed_y = 0;
 let met_x = 0;
 let met_y = -30;
 let random_dn = 1;
+let change_x = 0
 met_x = random_man(0, canvas.width/0.3);
 function check_collision(img1, x1, y1, img2, x2, y2) {
 let w1 = img1.naturalWidth || img1.width;
