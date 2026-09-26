@@ -34,7 +34,11 @@ met_x = random_man(0, canvas.width / 0.3);
 function shootpewpew(mx,my) {
     proj_x = player_x
     proj_y = player_y
-    
+    while (true) {
+        setTimeout(() => {
+          console.log("adadf")
+        }, 5); 
+    }
 }
 
 function get_drawn_size(image) {
