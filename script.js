@@ -1,7 +1,9 @@
 const canvas = document.getElementById("canvams");
 const ctx = canvas.getContext("2d");
 const img = document.getElementById("playerguy");
-const ast = document.getElementById("asteroid");
+const ast = document.getElementById("asteroid1");
+const ast2 = document.getElementById("asteroid2");
+const ast3 = document.getElementById("asteroid3");
 const playerspeed = 10;
 
 function randomman(min, max) {
@@ -55,12 +57,23 @@ function animate() {
     playery += speedy;
     
     ctx.drawImage(img, playerx, playery);
-    ctx.drawImage(ast, metx, mety);
+    
+    if (randomdn == 1) {
+      ctx.drawImage(ast, metx, mety);
+    }
+    if (randomdn == 2) {
+      ctx.drawImage(ast2, metx, mety);
+    }
+    if (randomdn == 3) {
+      ctx.drawImage(ast3, metx, mety);
+    }
+    
     if (mety < canvas.height / 0.3) {
       mety = mety + 10
     } else {
       mety = -30
       metx = randomman(0, canvas.width/0.3);
+      randomdn = randomman(1, 3)
     }
     
     requestAnimationFrame(animate);
