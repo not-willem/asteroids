@@ -47,19 +47,6 @@ function animate() {
     playerx += speedx;
     playery += speedy;
 
-    if (playerx < 0) {
-        playerx = 0;
-    }
-    if (playerx + img.width > canvas.width / 0.3) {
-        playerx = (canvas.width / 0.3) - img.width;
-    }
-    if (playery < 0) {
-        playery = 0;
-    }
-    if (playery + img.height > canvas.height / 0.3) {
-        playery = (canvas.height / 0.3) - img.height;
-    }
-
     ctx.drawImage(img, playerx, playery);
     requestAnimationFrame(animate);
 }
