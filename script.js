@@ -1,6 +1,8 @@
 let mouse_x = 0;
 let mouse_y = 0;
-
+let score = 0;
+const scoreman = document.getElementById("score");
+scoreman.textContent = "Score: "+score;
 const canvas = document.getElementById("canvams");
 const ctx = canvas.getContext("2d", { willReadFrequently: true });
 const img = document.getElementById("playerguy");
@@ -110,6 +112,9 @@ document.addEventListener('click', (event) => {
         met_x = random_man(0, canvas.width / 0.3);
         random_dn = random_man(1, 3);
         change_x = random_man(-2, 2);
+        score = score + 1;
+        const scoreman = document.getElementById("score");
+        scoreman.textContent = "Score: "+score;
         return;
     }
     Music1.play();
