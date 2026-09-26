@@ -32,13 +32,9 @@ let proj_y = 0;
 met_x = random_man(0, canvas.width / 0.3);
 
 function shootpewpew(mx,my) {
-    proj_x = player_x
-    proj_y = player_y
-    while (true) {
-        setTimeout(() => {
-          console.log("adadf")
-        }, 5); 
-    }
+    const proj_x = current.x + Math.sign(target.x - current.x);
+    const proj_y = current.y + Math.sign(target.y - current.y);
+    return { x, y };
 }
 
 function get_drawn_size(image) {
@@ -98,7 +94,10 @@ canvas.addEventListener('mousemove', (event) => {
     mouse_y = css_y / 0.3;
 });
 document.addEventListener('click', (event) => {
-  shootpewpew(mouse_x, mouse_y);
+    if (check_collision(img, mouse_x, mouse_y, current_ast, met_x, met_y)) {
+        console.log("clcickced");
+        return;
+    }
     Music1.play();
 });
 document.addEventListener('keyup', (event) => {
