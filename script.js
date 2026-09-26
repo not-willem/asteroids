@@ -17,6 +17,13 @@ let current_ast = ast;
 
 const mask_cache = new Map();
 
+function gameover() {
+        gamerunning = false;
+        const scoreman = document.getElementById("score");
+        scoreman.textContent = "Game Over!";
+        document.body.innerHTML += '<button id="restart">Play Again?</button>';
+}
+
 function random_man(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
 ctx.scale(0.3, 0.3);
@@ -151,10 +158,7 @@ function animate() {
 
     if (check_collision(img, player_x, player_y, current_ast, met_x, met_y)) {
         console.log("collision poo poo");
-        gamerunning = false;
-        const scoreman = document.getElementById("score");
-        scoreman.textContent = "Game Over!";
-        document.body.innerHTML += '<button id="restart">Play Again?</button>';
+        gameover();
         return;
     }
 
@@ -172,6 +176,12 @@ function animate() {
     }
     ctx.fillStyle = "red";
     ctx.fillRect(mouse_x, mouse_y, 10, 10);
+
+    if (score < 0){
+        score = 0;
+        gameover()
+    }
+    
     requestAnimationFrame(animate);
 }
 
