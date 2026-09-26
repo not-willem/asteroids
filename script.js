@@ -41,6 +41,8 @@ let playerx = 0;
 let playery = 0;
 let speedx = 0;
 let speedy = 0;
+let metx = 0;
+let mety = 0;
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width / 0.3, canvas.height / 0.3);
@@ -49,7 +51,8 @@ function animate() {
     playery += speedy;
 
     ctx.drawImage(img, playerx, playery);
-    ctx.drawImage(ast, 0, 0);
+    ctx.drawImage(ast, metx, mety);
+    
     requestAnimationFrame(animate);
 }
 animate();
