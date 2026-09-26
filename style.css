@@ -3,7 +3,6 @@ canvas {
     display: block;
     margin: 20px auto;
     background-image: url("background.jpeg");
-    background-repeat: no-repeat;
     background-size: cover;
 }
 
