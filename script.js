@@ -1,3 +1,6 @@
+let mouse_x = 0;
+let mouse_y = 0;
+
 const canvas = document.getElementById("canvams");
 const ctx = canvas.getContext("2d", { willReadFrequently: true });
 const img = document.getElementById("playerguy");
@@ -75,7 +78,13 @@ document.addEventListener('keydown', (event) => {
     if (keys_pressed['s'] || keys_pressed['S']) { speed_y = player_speed; }
     if (keys_pressed['w'] || keys_pressed['W']) { speed_y = -player_speed; }
 });
-
+canvas.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    const css_x = event.clientX - rect.left;
+    const css_y = event.clientY - rect.top;
+    mouse_x = css_x / 0.3;
+    mouse_y = css_y / 0.3;
+});
 document.addEventListener('keyup', (event) => {
     keys_pressed[event.key] = false;
     if (!keys_pressed['d'] && !keys_pressed['a'] && !keys_pressed['D'] && !keys_pressed['A']) { speed_x = 0; }
