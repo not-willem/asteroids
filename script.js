@@ -10,6 +10,7 @@ const ast2 = document.getElementById("asteroid2");
 const ast3 = document.getElementById("asteroid3");
 let gamerunning = true;
 const Music1 = new Audio('Game sounds/Music/Music1.ogg');
+const Ambient = new Audio('Game sounds/Music/Ambient.ogg');
 const Gun1 = new Audio('Game sounds/Gun/railgun-gunshot-1.ogg');
 const Gun2 = new Audio('Game sounds/Gun/railgun-gunshot-2.ogg');
 const Gun3 = new Audio('Game sounds/Gun/railgun-gunshot-3.ogg');
@@ -146,6 +147,7 @@ document.addEventListener('click', (event) => {
         return;
     }
     Music1.play();
+    Ambient.play();
 });
 document.addEventListener('keyup', (event) => {
     keys_pressed[event.key] = false;
