@@ -46,7 +46,7 @@ let playery = 0;
 let speedx = 0;
 let speedy = 0;
 let metx = 0;
-let mety = 0;
+let mety = -30;
 metx = randomman(0, canvas.width/0.3);
 function animate() {
     ctx.clearRect(0, 0, canvas.width / 0.3, canvas.height / 0.3);
@@ -59,7 +59,7 @@ function animate() {
     if (mety < canvas.height / 0.3) {
       mety = mety + 10
     } else {
-      mety = -10
+      mety = -30
       metx = randomman(0, canvas.width/0.3);
     }
     
