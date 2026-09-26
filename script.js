@@ -69,8 +69,8 @@ function animate() {
 ctx.clearRect(0, 0, canvas.width / 0.3, canvas.height / 0.3);
 let next_x = player_x += speed_x;
 let next_y = player_y += speed_y;
-if (next_x < canvas.width / 0.3 || next_x > 0){player_x += speed_x;}
-if (next_y < canvas.height / 0.3 || next_y > 0){player_y += speed_y;}
+if (next_x < canvas.width / 0.3 && next_x > 0){player_x += speed_x;}
+if (next_y < canvas.height / 0.3 && next_y > 0){player_y += speed_y;}
 
 ctx.drawImage(img, player_x, player_y);
 let current_ast = ast;
