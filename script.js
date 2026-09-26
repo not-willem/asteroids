@@ -13,6 +13,8 @@ const Music1 = new Audio('Game sounds/Music/Music1.ogg');
 
 let current_ast = ast;
 
+const mask_cache = new Map();
+
 function random_man(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
 ctx.scale(0.3, 0.3);
@@ -45,37 +47,42 @@ function get_drawn_size(image) {
     };
 }
 
+function get_mask(image) {
+    if (mask_cache.has(image)) return mask_cache.get(image);
+    const w = image.naturalWidth || image.width;
+    const h = image.naturalHeight || image.height;
+    const c = document.createElement('canvas');
+    c.width = w;
+    c.height = h;
+    const cx = c.getContext('2d', { willReadFrequently: true });
+    cx.drawImage(image, 0, 0);
+    const mask = cx.getImageData(0, 0, w, h).data;
+    const entry = { mask, w, h };
+    mask_cache.set(image, entry);
+    return entry;
+}
+
 function check_collision(img1, x1, y1, img2, x2, y2) {
-    const s1 = get_drawn_size(img1);
-    const s2 = get_drawn_size(img2);
-
-    const w1 = s1.w, h1 = s1.h;
-    const w2 = s2.w, h2 = s2.h;
-
-    if (x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1) return false;
+    const m1 = get_mask(img1);
+    const m2 = get_mask(img2);
 
     const o_x = Math.max(x1, x2);
     const o_y = Math.max(y1, y2);
-    const o_w = Math.min(x1 + w1, x2 + w2) - o_x;
-    const o_h = Math.min(y1 + h1, y2 + h2) - o_y;
+    const o_w = Math.min(x1 + m1.w, x2 + m2.w) - o_x;
+    const o_h = Math.min(y1 + m1.h, y2 + m2.h) - o_y;
 
     if (o_w <= 0 || o_h <= 0) return false;
 
-    const off_canvas = document.createElement('canvas');
-    off_canvas.width = o_w;
-    off_canvas.height = o_h;
-    const off_ctx = off_canvas.getContext('2d');
-
-    off_ctx.clearRect(0, 0, o_w, o_h);
-    off_ctx.drawImage(img1, o_x - x1, o_y - y1, o_w, o_h, 0, 0, o_w, o_h);
-    let data1 = off_ctx.getImageData(0, 0, o_w, o_h).data;
-
-    off_ctx.clearRect(0, 0, o_w, o_h);
-    off_ctx.drawImage(img2, o_x - x2, o_y - y2, o_w, o_h, 0, 0, o_w, o_h);
-    let data2 = off_ctx.getImageData(0, 0, o_w, o_h).data;
-
-    for (let i = 3; i < data1.length; i += 4) {
-        if (data1[i] > 0 && data2[i] > 0) return true;
+    for (let row = 0; row < o_h; row++) {
+        for (let col = 0; col < o_w; col++) {
+            const ix1 = (o_x - x1) + col;
+            const iy1 = (o_y - y1) + row;
+            const ix2 = (o_x - x2) + col;
+            const iy2 = (o_y - y2) + row;
+            const a1 = m1.mask[(iy1 * m1.w + ix1) * 4 + 3];
+            const a2 = m2.mask[(iy2 * m2.w + ix2) * 4 + 3];
+            if (a1 > 0 && a2 > 0) return true;
+        }
     }
     return false;
 }
