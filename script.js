@@ -11,6 +11,7 @@ const player_speed = 10;
 let gamerunning = true;
 const Music1 = new Audio('Game sounds/Music/Music1.ogg');
 
+let current_ast = ast;
 
 function random_man(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
@@ -94,7 +95,10 @@ canvas.addEventListener('mousemove', (event) => {
     mouse_y = css_y / 0.3;
 });
 document.addEventListener('click', (event) => {
-    if (check_collision(img, mouse_x, mouse_y, current_ast, met_x, met_y)) {
+    const s = get_drawn_size(current_ast);
+    const hit = mouse_x >= met_x && mouse_x <= met_x + s.w &&
+                mouse_y >= met_y && mouse_y <= met_y + s.h;
+    if (hit) {
         console.log("clcickced");
         return;
     }
@@ -126,7 +130,6 @@ function animate() {
 
     ctx.drawImage(img, player_x, player_y);
 
-    let current_ast = ast;
     if (random_dn == 1) { ctx.drawImage(ast, met_x, met_y); current_ast = ast; }
     if (random_dn == 2) { ctx.drawImage(ast2, met_x, met_y); current_ast = ast2; }
     if (random_dn == 3) { ctx.drawImage(ast3, met_x, met_y); current_ast = ast3; }
