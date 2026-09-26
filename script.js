@@ -181,6 +181,7 @@ function animate() {
 
     if (score < 0){
         score = 0;
+        gameover()
     }
     
     requestAnimationFrame(animate);
