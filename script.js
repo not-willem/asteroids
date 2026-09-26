@@ -73,7 +73,7 @@ if (check_collision(img, player_x, player_y, current_ast, met_x, met_y)) {
 console.log("collision");
 gamerunning = false;
 }
-if (met_y < canvas.height / 0.3) { met_y = met_y + 10 } else { met_y = -30; met_x = random_man(0, canvas.width/0.3); random_dn = random_man(1, 3); }
+if (met_y < canvas.height / 0.3) { met_y = met_y + 10 } else { met_y = -50; met_x = random_man(0, canvas.width/0.3); random_dn = random_man(1, 3); }
 if (gamerunning){requestAnimationFrame(animate);}
 }
 animate();
