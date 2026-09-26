@@ -13,15 +13,24 @@ const player_speed = 10;
 let gamerunning = true;
 const Music1 = new Audio('Game sounds/Music/Music1.ogg');
 
+
+
 let current_ast = ast;
 
 const mask_cache = new Map();
+
+function restartgame() {
+        score = 0;
+        gamerunning = true;
+}
 
 function gameover() {
         gamerunning = false;
         const scoreman = document.getElementById("score");
         scoreman.textContent = "Game Over!";
         document.body.innerHTML += '<div class="restart_div"><button id="restart" class="restart">Play Again?</button></div>';
+        const res = document.getElementById("restart");
+        res.addEventListener("click", restartgame);
 }
 
 function random_man(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
